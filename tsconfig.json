@@ -4,18 +4,20 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "es2022",
-    "verbatimModuleSyntax": true,
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "force",
     /* Strictness */
-    "strict": true,
+    "strict": false,
     "noUncheckedIndexedAccess": true,
     /* If NOT transpiling with TypeScript: */
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
     "module": "ESNext",
     "noEmit": true,
     /* If your code runs in the DOM: */
     "lib": ["es2022", "dom", "dom.iterable"],
-  }
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+  },
+  "include": ["src/**/*", "tests"]
 }
