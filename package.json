@@ -26,6 +26,8 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "groq-sdk": "^0.3.2",
-    "reflect-metadata": "^0.2.2"
+    "jsonschema": "^1.4.1",
+    "reflect-metadata": "^0.2.2",
+    "typescript-json-schema": "^0.63.0"
   }
 }

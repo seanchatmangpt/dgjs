@@ -31,15 +31,22 @@ Reasoning:
 - Begin by identifying key-value pairs, lists, or other structures within the provided text.
 - Structure the identified elements into a valid JSON object format.
 - Ensure the generated JSON object accurately reflects the provided information.
+
 [/INST]
 `)
 export class GenerateJSONFromText {
-  @InputField("Text information in structured or unstructured format.")
-  textInformation: string;
-
-  @InputField("JSON schema to validate the JSON object.")
+  @InputField(
+    "JSON schema to validate the JSON object. YOUR RESPONSE MUST ADHERE TO THIS SCHEMA."
+  )
   jsonSchema: string;
 
-  @OutputField("The generated JSON object as a string.")
+  @InputField(
+    "Text information in structured or unstructured format. To be converted into a JSON object."
+  )
+  textInformation: string;
+
+  @OutputField(
+    "YOUR ONLY OUTPUT IS THE JSON OBJECT. Ensure it adheres to the provided JSON schema."
+  )
   jsonObject: string;
 }

@@ -13,7 +13,7 @@ export class Predict {
 
   async forward(inputData: any): Promise<any> {
     const prompt = this.template.format(inputData);
-    const response = await this.lm.__call(prompt);
+    const response = await this.lm.forward(prompt);
     return this.processResponse(response[0]);
   }
 

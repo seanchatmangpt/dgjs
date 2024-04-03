@@ -10,12 +10,6 @@ describe("Predict Class", () => {
   let signature: GenerateJSONFromText;
 
   beforeEach(() => {
-    const prompt = `
-      Hi Jane, I hope you are doing well. I wanted to remind you about our meeting tomorrow at 10:00 AM.
-      Today: 2023-06-08 09:30:00 Tomorrow: 2023-06-09 10:00:00
-      Location: 123 Main St, Anytown, USA Description: Discuss project progress and next steps.
-    `;
-
     signature = new GenerateJSONFromText();
     dummyLM = new DummyLM(["Mocked LM response"]); // Assuming the DummyLM can be initialized with mock responses
     predict = new Predict(signature, dummyLM);
@@ -37,18 +31,20 @@ describe("Predict Class", () => {
 
     const prompt = `
       Hi Jane, I hope you are doing well. I wanted to remind you about our meeting tomorrow at 10:00 AM.
-      Today: 2023-06-08 09:30:00 Tomorrow: 2023-06-09 10:00:00
-      Location: 123 Main St, Anytown, USA Description: Discuss project progress and next steps.
+      Location: 123 Main St, Anytown, USA Description: Discuss project progress and next steps. 
+      
+      Thanks, John
     `;
 
     const jsonPredict = new Predict(signature, lm);
 
     const response = await jsonPredict.forward({
+      jsonSchema: VEvent.toStringSchema(),
       textInformation: prompt,
-      jsonSchema:
-        " {'properties': {'dtstart': {'title': 'Dtstart', 'type': 'string'}, 'dtend': {'title': 'Dtend', 'type': 'string'}, 'summary': {'title': 'Summary', 'type': 'string'}, 'location': {'title': 'Location', 'type': 'string'}, 'description': {'title': 'Description', 'type': 'string'}}, 'required': ['dtstart', 'dtend', 'summary', 'location', 'description'], 'title': 'VEvent', 'type': 'object'}",
     });
 
-    expect(response).toBeTruthy();
+    const evt = VEvent.fromString(response);
+
+    expect(evt).toBeTruthy();
   });
 });
