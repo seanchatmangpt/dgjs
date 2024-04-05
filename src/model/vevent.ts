@@ -1,4 +1,5 @@
 import { Validator } from "jsonschema";
+import { extract } from "../utils/json-tools";
 
 class VEvent {
   dtstart: string;
@@ -44,7 +45,8 @@ class VEvent {
   }
 
   static fromString(data: string) {
-    return new VEvent(JSON.parse(data));
+    const value: VEvent = extract(data) as unknown as VEvent;
+    return new VEvent(value);
   }
 
   static schema = {

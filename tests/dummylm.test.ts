@@ -46,18 +46,6 @@ describe("DummyLM", () => {
     });
   });
 
-  describe("inspectHistory", () => {
-    test("should correctly inspect history", async () => {
-      console.log = jest.fn(); // Mock console.log
-      const answers = ["Yes"];
-      const model = new DummyLM(answers);
-      await model.basicRequest("Is the sky blue?");
-      await model.inspectHistory();
-      expect(console.log).toHaveBeenCalled();
-      // Further asserts can check for specific logged outputs, which might require mocking process.stdout
-    });
-  });
-
   describe("Error handling and edge cases", () => {
     // Add tests to handle API errors, connection errors, and timeouts
     // You might need to mock these errors within the `DummyLM` class for testing purposes

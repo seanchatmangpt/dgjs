@@ -32,7 +32,7 @@ class DummyLM extends LM {
           new RegExp(`${prefix}\\s*(.*)`, "g")
         );
         if (possibleAnswers) {
-          answer = possibleAnswers[possibleAnswers.length - 1].trim();
+          answer = possibleAnswers[possibleAnswers.length - 1]?.trim() || "";
           console.log(
             `DummyLM found previous example for ${prefix} with value ${answer}`
           );

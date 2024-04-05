@@ -1,21 +1,23 @@
-// Before each test, replace console.log with a mock function
+import { beforeEach, afterEach, describe, it, expect, vi } from "vitest";
 import {
   InputField,
   OutputField,
   SignatureDocumentation,
 } from "../src/signature";
+import "reflect-metadata"; // Ensure Reflect.metadata API is available
 
+// Before each test, replace console.log with a mock function
 beforeEach(() => {
-  jest.spyOn(console, "log").mockImplementation(() => {});
+  vi.spyOn(console, "log").mockImplementation(() => {});
 });
 
 // After each test, restore the original console.log function
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.restoreAllMocks();
 });
 
 describe("Decorator Tests", () => {
-  test("SignatureDocumentation attaches documentation", () => {
+  it("SignatureDocumentation attaches documentation", () => {
     const testDoc = "Test Documentation";
     @SignatureDocumentation(testDoc)
     class TestClass {}
@@ -24,7 +26,7 @@ describe("Decorator Tests", () => {
     expect(doc).toBe(testDoc);
   });
 
-  test("InputField and OutputField attach descriptions and prefixes", () => {
+  it("InputField and OutputField attach descriptions and prefixes", () => {
     class TestClass {
       @InputField("Test input description", "inputPrefix")
       inputProp!: string;
@@ -49,7 +51,7 @@ describe("Decorator Tests", () => {
     expect(outputMetadata.prefix).toBe("outputPrefix");
   });
 
-  test("InputField and OutputField attach descriptions", () => {
+  it("InputField and OutputField attach descriptions", () => {
     class TestClass {
       @InputField("Test input description")
       inputProp!: string;
@@ -81,15 +83,15 @@ describe("Signature decorators and SignatureBase class", () => {
   `)
   class TestSignature {
     @InputField("Test input description.", "InputPrefix:")
-    testInput: string;
+    testInput: string = "";
 
     @OutputField("Test output description.", "OutputPrefix:")
-    testOutput: string;
+    testOutput: string = "";
 
-    constructor(testInput: string) {}
+    constructor() {}
   }
 
-  test("SignatureDocumentation should attach documentation metadata to the class", () => {
+  it("SignatureDocumentation should attach documentation metadata to the class", () => {
     const documentation = Reflect.getMetadata(
       "signatureDocumentation",
       TestSignature
@@ -97,7 +99,7 @@ describe("Signature decorators and SignatureBase class", () => {
     expect(documentation.trim()).toContain("[Test] This is a test class");
   });
 
-  test("InputField and OutputField decorators should attach metadata correctly", () => {
+  it("InputField and OutputField decorators should attach metadata correctly", () => {
     const inputMetadata = Reflect.getMetadata(
       "inputField",
       TestSignature.prototype,

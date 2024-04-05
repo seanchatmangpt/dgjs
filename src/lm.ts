@@ -75,7 +75,9 @@ abstract class LM {
     }
 
     for (let idx = 0; idx < printed.length; idx++) {
-      const [prompt, choices] = printed[printed.length - idx - 1];
+      const [prompt, choices]: [string, any] = printed[
+        printed.length - idx - 1
+      ] || ["", ""];
 
       if (n - idx - 1 < skip) {
         continue;

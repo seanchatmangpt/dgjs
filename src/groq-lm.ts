@@ -6,10 +6,16 @@ import {
   APIError,
 } from "./errors";
 
+const GroqModels = {
+  mixtral: "mixtral-8x7b-32768",
+  llama2: "llama2-70b-4096",
+  gemma: "gemma-7b-it",
+};
+
 class GroqLM extends LM {
   public client: Groq;
 
-  constructor(model: string = "mixtral-8x7b-32768", ...args: any[]) {
+  constructor(model: string = GroqModels.llama2, ...args: any[]) {
     super(model);
     this.provider = "groq";
     this.history = [];
@@ -61,16 +67,16 @@ class GroqLM extends LM {
     ...args: any[]
   ): Promise<string[]> {
     const chatCompletion = await this.basicRequest(prompt, ...args);
-    return [chatCompletion.choices[0].message.content];
+    return [chatCompletion.choices[0]?.message.content || ""];
   }
 
   async forward(prompt: string, ...args: any[]): Promise<string[]> {
     return this.__call(prompt, ...args);
   }
 
-  _getChoiceText(choice: Groq.Chat.ChatCompletion): string {
-    return choice.choices[0].message.content;
+  _getChoiceText(choice: any): string {
+    return choice.choices[0]?.message.content || "";
   }
 }
 
-export { GroqLM };
+export { GroqLM, GroqModels };

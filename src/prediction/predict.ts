@@ -14,7 +14,7 @@ export class Predict {
   async forward(inputData: any): Promise<any> {
     const prompt = this.template.format(inputData);
     const response = await this.lm.forward(prompt);
-    return this.processResponse(response[0]);
+    return this.processResponse(response[0] as string);
   }
 
   private processResponse(response: string): any {
