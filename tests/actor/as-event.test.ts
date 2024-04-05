@@ -1,4 +1,4 @@
-// tests/actorSystem.test.ts
+// tests/actorSystem.tests.ts
 import { describe, it, expect, beforeEach } from "vitest";
 import MockScheduler from "../mock/mock-scheduler";
 import { checkForEventConflicts } from "../mock/mock-event-scheduler";

@@ -53,7 +53,7 @@ describe("DummyLM", () => {
 
   describe("DummyLM Tests", () => {
     it('should return "Yes" for "Is the sky blue?" question', async () => {
-      // Initialize DummyLM with an answer for the test case
+      // Initialize DummyLM with an answer for the tests case
       const answers = ["Yes"]; // Assuming a simple case where we expect a static answer
       const dummyLM = new DummyLM(answers);
 

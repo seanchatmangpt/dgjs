@@ -1,12 +1,12 @@
 {
-  "name": "dgjs",
+  "name": "dpgjs",
   "license": "MIT",
-  "version": "2024.4.5",
+  "version": "2024.4.6",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "node generate-exports.js && tsup src/index.ts --format cjs,esm --dts",
     "release": "pnpm run build && changeset publish",
     "start": "tsup src/index.ts --format cjs,esm --dts --watch",
     "lint": "tsc",

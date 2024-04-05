@@ -18,9 +18,9 @@ DSPyGen JS leverages modern TypeScript features to offer developers a robust fra
 To use DSPyGen JS in your project, ensure you have Node.js and npm or yarn installed. Then, add DSPyGen JS to your project dependencies using npm or yarn:
 
 ```sh
-npm install dgjs
+npm install dpgjs
 # or
-yarn add dgjs
+yarn add dpgjs
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ yarn add dgjs
 The `GroqLM` class allows for seamless interaction with Groq's language models. It's designed to handle various communication errors gracefully and provides a simple interface for making predictions:
 
 ```typescript
-import { GroqLM, GroqModels } from "dgjs";
+import { GroqLM, GroqModels } from "dpgjs";
 
 const model = new GroqLM(GroqModels.llama2);
 model.forward(prompt)
@@ -43,7 +43,7 @@ model.forward(prompt)
 DSPyGen JS employs an actor system to manage concurrency and facilitate message passing between different components of your pipeline:
 
 ```typescript
-import { ActorSystem, BaseActor, BaseMessage } from "dgjs";
+import { ActorSystem, BaseActor, BaseMessage } from "dpgjs";
 
 class MyActor extends BaseActor {
   handleMessage(message: BaseMessage) {
@@ -60,7 +60,7 @@ const actor = system.actorOf(MyActor);
 Validating data objects against JSON schemas is streamlined with the `VEvent` class, which automatically validates its properties upon creation:
 
 ```typescript
-import { VEvent } from "dgjs";
+import { VEvent } from "dpgjs";
 
 const eventData = {
   // Event data following the VEvent schema
@@ -73,7 +73,7 @@ const event = new VEvent(eventData);
 The utility function `extract` can be used to parse strings and extract JSON objects, simplifying the process of dealing with unstructured data:
 
 ```typescript
-import { extract } from "dgjs";
+import { extract } from "dpgjs";
 
 const jsonString = extract('{"key": "value"}');
 console.log(jsonString); // Outputs the parsed JSON object
@@ -85,7 +85,7 @@ DSPyGen JS comes with built-in support for unit testing using Vitest, allowing y
 
 ```typescript
 import { describe, it, expect } from "vitest";
-import { MyComponent } from "dgjs";
+import { MyComponent } from "dpgjs";
 
 describe("MyComponent", () => {
   it("should behave correctly", () => {
