@@ -1,4 +1,4 @@
-import { LM } from "./LM";
+import { LM } from "./lm";
 
 class DummyLM extends LM {
   answers: string[] | { [key: string]: string };

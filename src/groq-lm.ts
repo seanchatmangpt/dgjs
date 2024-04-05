@@ -1,10 +1,10 @@
-import { LM } from "./LM";
 import Groq from "groq-sdk";
 import {
   APIConnectionError,
   APIConnectionTimeoutError,
   APIError,
 } from "./errors";
+import { LM } from "./lm";
 
 const GroqModels = {
   mixtral: "mixtral-8x7b-32768",
