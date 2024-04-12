@@ -18,7 +18,12 @@
     "lib": ["es2022", "dom", "dom.iterable"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "baseUrl": ".", // This sets the base directory for resolving non-relative module names.
+
+
   },
-  "include": ["src/**/*", "tests"]
+  "include": ["src/**/*",
+    "test/**/*"
+  ]
 }

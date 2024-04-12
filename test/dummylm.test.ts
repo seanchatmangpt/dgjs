@@ -47,13 +47,13 @@ describe("DummyLM", () => {
   });
 
   describe("Error handling and edge cases", () => {
-    // Add tests to handle API errors, connection errors, and timeouts
+    // Add test to handle API errors, connection errors, and timeouts
     // You might need to mock these errors within the `DummyLM` class for testing purposes
   });
 
   describe("DummyLM Tests", () => {
     it('should return "Yes" for "Is the sky blue?" question', async () => {
-      // Initialize DummyLM with an answer for the tests case
+      // Initialize DummyLM with an answer for the test case
       const answers = ["Yes"]; // Assuming a simple case where we expect a static answer
       const dummyLM = new DummyLM(answers);
 

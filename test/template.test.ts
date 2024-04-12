@@ -29,4 +29,4 @@ test("should correctly format the prompt for given input", () => {
   expect(formattedPrompt).toBeTruthy();
 });
 
-// Additional tests for other scenarios and edge cases can be added here
+// Additional test for other scenarios and edge cases can be added here

@@ -1,12 +1,13 @@
 import { BaseMessage } from "./base-message";
 import { ActorSystem } from "./actor-system";
+import { v4 as uuid } from "uuid";
 
 abstract class BaseActor {
-  public actorId: number;
+  public actorId: string;
   public actorSystem: ActorSystem;
 
-  constructor(actorId: number, actorSystem: ActorSystem, ...rest: any[]) {
-    this.actorId = actorId;
+  constructor(actorSystem: ActorSystem, actorId?: string, ...rest: any[]) {
+    this.actorId = actorId || uuid();
     this.actorSystem = actorSystem;
   }
 
@@ -25,12 +26,12 @@ abstract class BaseActor {
 
   // Publish a message to the system
   publish(message: BaseMessage): void {
-    this.actorSystem.publishMessage(message);
+    this.actorSystem.publish(message);
   }
 
   // Directly send a message to another actor in the system
-  sendMessage(actorId: number, message: BaseMessage): void {
-    this.actorSystem.sendMessage(actorId, message);
+  send(actorId: string, message: BaseMessage): void {
+    this.actorSystem.send(actorId, message);
   }
 
   terminate(): void {

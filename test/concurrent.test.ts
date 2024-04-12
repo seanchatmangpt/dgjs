@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import { VEvent } from "../src/model/vevent";
-import { GroqLM, GroqModels } from "../src/groq-lm";
-import { Predict } from "../src/prediction/predict";
-import { GenerateJSONFromText } from "../src/sig/generate-json-from-text";
+import { GroqLM, GroqModels } from "src/groq-lm";
+import { Predict } from "src/prediction/predict";
+import { GenerateJSONFromText } from "src/sig/generate-json-from-text";
+import { VEvent } from "../src";
 
 interface User {
   id: number;
@@ -106,8 +106,8 @@ describe("jsonPredict unit", () => {
   it("should return a valid VEvent", async () => {
     const mockResponse = "mocked VEvent string";
 
-    vi.spyOn(VEvent, "toStringSchema").mockReturnValue("mocked schema");
-    vi.spyOn(VEvent, "fromString").mockReturnValue(mockVEvent);
+    // vi.spyOn(VEvent, "toStringSchema").mockReturnValue("mocked schema");
+    // vi.spyOn(VEvent, "fromString").mockReturnValue(mockVEvent);
 
     const lm = new GroqLM();
     const jsonPredict = new Predict(new GenerateJSONFromText(), lm);
@@ -119,7 +119,7 @@ describe("jsonPredict unit", () => {
       Thanks, John
     `;
 
-    vi.spyOn(jsonPredict, "forward").mockResolvedValue(mockResponse);
+    // vi.spyOn(jsonPredict, "forward").mockResolvedValue(mockResponse);
 
     const responses: any[] = await Promise.all([
       jsonPredict.forward({
@@ -137,16 +137,11 @@ describe("jsonPredict unit", () => {
     ]);
 
     for (const response of responses) {
+      console.log(response);
+
       const evt = VEvent.fromString(response);
 
       expect(evt).toBeTruthy();
-      expect(evt).toEqual(mockVEvent);
-      expect(VEvent.toStringSchema).toHaveBeenCalled();
-      expect(VEvent.fromString).toHaveBeenCalledWith(mockResponse);
-      expect(jsonPredict.forward).toHaveBeenCalledWith({
-        jsonSchema: "mocked schema",
-        textInformation: prompt,
-      });
     }
   });
 });

@@ -7,7 +7,7 @@ import { ActorSystem } from "../../src/actor/actor-system";
 // TestMessage.ts
 class TestMessage extends BaseMessage {
   constructor(content: string) {
-    super({ messageType: "TestMessage", content });
+    super({ attributes: { messageType: "TestMessage", content } });
   }
 }
 
@@ -26,22 +26,22 @@ describe("ActorSystem", () => {
   });
 
   it("registers and unregisters an actor successfully", () => {
-    const actor = actorSystem.actorOf(TestActor);
+    const actor = actorSystem.actorOf(TestActor, "1");
 
     expect(() => actorSystem.registerActor(actor)).toThrowError(
-      "Actor with ID 1 is already registered"
+      "Actor with ID 1 is already registered",
     );
 
     actorSystem.unregisterActor(actor.actorId);
     expect(() => actorSystem.unregisterActor(actor.actorId)).toThrowError(
-      "Actor with ID 1 does not exist"
+      "Actor with ID 1 does not exist",
     );
   });
 
   it("throws error when sending a message to an unregistered actor", async () => {
     const message = new TestMessage("Hello, world!");
-    expect(() => actorSystem.sendMessage(999, message)).toThrowError(
-      "Actor with ID 999 does not exist"
+    expect(() => actorSystem.send("999", message)).toThrowError(
+      "Actor with ID 999 does not exist",
     );
   });
 
@@ -53,7 +53,7 @@ describe("ActorSystem", () => {
     const spy2 = vi.spyOn(actor2, "handleMessage");
 
     const message = new TestMessage("Broadcast message");
-    actorSystem.publishMessage(message);
+    actorSystem.publish(message);
 
     await new Promise((resolve) => setTimeout(resolve, 0)); // Wait for async message handling
 
@@ -63,7 +63,7 @@ describe("ActorSystem", () => {
 
   it("ensures waitForMessage resolves with correct message type", async () => {
     const message = new TestMessage("Hello, future!");
-    setTimeout(() => actorSystem.publishMessage(message), 0); // Simulate async message publish
+    setTimeout(() => actorSystem.publish(message), 0); // Simulate async message publish
 
     const receivedMessage = await actorSystem.waitForMessage(TestMessage);
     expect(receivedMessage).toBeInstanceOf(TestMessage);

@@ -5,8 +5,8 @@ import { BaseMessage } from "../../src/actor/base-message";
 
 // Mock classes and interfaces
 class TestMessage extends BaseMessage {
-  constructor(content: string = "Test message") {
-    super({ messageType: "TestMessage", content });
+  constructor() {
+    super({});
   }
 }
 
@@ -18,8 +18,8 @@ class MockActorSystem extends ActorSystem {
     return super.actorOf(actorClass, ...rest);
   }
 
-  publishMessage = vi.fn();
-  sendMessage = vi.fn();
+  publish = vi.fn();
+  send = vi.fn();
 }
 
 class TestActor extends BaseActor {
@@ -55,7 +55,7 @@ describe("TestActor", () => {
     await testActor.handleMessage(testMessage);
 
     expect(spy).toHaveBeenCalledWith(
-      expect.stringContaining("Received message: TestMessage")
+      expect.stringContaining("Received message: TestMessage"),
     );
   });
 
@@ -64,18 +64,18 @@ describe("TestActor", () => {
 
     testActor.publish(testMessage);
 
-    expect(mockActorSystem.publishMessage).toHaveBeenCalledWith(testMessage);
+    expect(mockActorSystem.publish).toHaveBeenCalledWith(testMessage);
   });
 
   it("sends a message directly to another actor in the system", () => {
-    const targetActorId = 2;
+    const targetActorId = "2";
     const testMessage = new TestMessage();
 
-    testActor.sendMessage(targetActorId, testMessage);
+    testActor.send(targetActorId, testMessage);
 
-    expect(mockActorSystem.sendMessage).toHaveBeenCalledWith(
+    expect(mockActorSystem.send).toHaveBeenCalledWith(
       targetActorId,
-      testMessage
+      testMessage,
     );
   });
 
@@ -84,11 +84,11 @@ describe("TestActor", () => {
     testActor.terminate();
 
     expect(spy).toHaveBeenCalledWith(
-      expect.stringContaining(`Terminating actor ${testActor.actorId}`)
+      expect.stringContaining(`Terminating actor ${testActor.actorId}`),
     );
   });
 
-  // Here you can add more tests to cover any utility methods or edge cases.
+  // Here you can add more test to cover any utility methods or edge cases.
 
   afterEach(() => {
     vi.restoreAllMocks();

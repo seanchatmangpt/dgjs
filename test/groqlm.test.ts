@@ -167,7 +167,7 @@ describe("GroqLM", () => {
   });
 
   // Assuming a valid GroqLM integration environment
-  describe("Integration tests", () => {
+  describe("Integration test", () => {
     it("sends a request to the Groq API and returns the response", async () => {
       const prompt = "What is the capital of France?";
 

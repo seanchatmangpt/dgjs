@@ -6,12 +6,12 @@ import {
 } from "../src/signature";
 import "reflect-metadata"; // Ensure Reflect.metadata API is available
 
-// Before each tests, replace console.log with a mock function
+// Before each test, replace console.log with a mock function
 beforeEach(() => {
   vi.spyOn(console, "log").mockImplementation(() => {});
 });
 
-// After each tests, restore the original console.log function
+// After each test, restore the original console.log function
 afterEach(() => {
   vi.restoreAllMocks();
 });
@@ -76,7 +76,7 @@ describe("Decorator Tests", () => {
 });
 
 describe("Signature decorators and SignatureBase class", () => {
-  // Define a tests class using decorators for testing
+  // Define a test class using decorators for testing
   @SignatureDocumentation(`
     [Test] This is a test class for verifying decorator functionality.
     [/Test]
@@ -96,7 +96,7 @@ describe("Signature decorators and SignatureBase class", () => {
       "signatureDocumentation",
       TestSignature
     );
-    expect(documentation.trim()).toContain("[Test] This is a tests class");
+    expect(documentation.trim()).toContain("[Test] This is a test class");
   });
 
   it("InputField and OutputField decorators should attach metadata correctly", () => {

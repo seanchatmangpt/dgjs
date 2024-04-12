@@ -3,19 +3,40 @@ import { filter } from "rxjs/operators";
 import { BaseActor } from "./base-actor";
 import { BaseMessage } from "./base-message";
 import { assert, isDefined } from "../utils/design-by-contract-tools";
+import { BrokerAdapter } from "./base-broker-adapter";
+import { DEFAULT_TOPIC } from "../constant/constants";
+import { v4 as uuid } from "uuid";
 
 class ActorSystem {
-  private static nextActorId = 1;
-  private actors: Map<number, BaseActor> = new Map();
+  private actors: Map<string, BaseActor> = new Map();
   private eventStream: Subject<BaseMessage> = new Subject();
 
-  constructor() {}
+  constructor(private brokerAdapters: BrokerAdapter[] = []) {
+    this.eventStream = new Subject();
 
+    // Setup interactions with BrokerAdapters
+    this.brokerAdapters.forEach((adapter) => {
+      // 1. Subscribe adapter to relevant events from the eventStream
+      adapter.subscribe(DEFAULT_TOPIC, (message) => {
+        // You might apply filtering here
+        this.eventStream.next(message);
+      });
+
+      // 2. Forward messages from publishMessage to adapters
+      this.publish = (message: BaseMessage) => {
+        // ... (Existing logic) ...
+        this.eventStream.next(message);
+        adapter.publish(message.topic, message);
+      };
+    });
+  }
   actorOf(
     actorClass: new (...args: any[]) => BaseActor,
+    actorId?: string,
     ...rest: any[]
   ): BaseActor {
-    const actor = new actorClass(ActorSystem.nextActorId++, this, ...rest);
+    const id = actorId || uuid();
+    const actor = new actorClass(this, id, ...rest);
     this.registerActor(actor);
     return actor;
   }
@@ -24,7 +45,7 @@ class ActorSystem {
     assert(actor !== null, "Actor must not be null");
     assert(
       !this.actors.has(actor.actorId),
-      `Actor with ID ${actor.actorId} is already registered`
+      `Actor with ID ${actor.actorId} is already registered`,
     );
 
     console.log(`Registering actor ${actor.actorId}`);
@@ -33,10 +54,10 @@ class ActorSystem {
     this.subscribeActorToEventStream(actor);
   }
 
-  unregisterActor(actorId: number): void {
+  unregisterActor(actorId: string): void {
     isDefined(
       this.actors.get(actorId),
-      `Actor with ID ${actorId} does not exist`
+      `Actor with ID ${actorId} does not exist`,
     );
     console.log(`Unregistering actor ${actorId}`);
     this.actors.delete(actorId);
@@ -49,19 +70,19 @@ class ActorSystem {
       error: (err) =>
         console.error(
           `Error in message stream for actor ${actor.actorId}:`,
-          err
+          err,
         ),
       // Note: No need to complete as Subject won't complete unless the system shuts down
     });
   }
 
-  publishMessage(message: BaseMessage): void {
+  publish(message: BaseMessage): void {
     isDefined(message, "Message must not be null");
     console.log("Publishing message:", message);
     this.eventStream.next(message);
   }
 
-  sendMessage(actorId: number, message: BaseMessage): void {
+  send(actorId: string, message: BaseMessage): void {
     console.log("Sending message to actor", actorId, ":", message);
     const actor = this.actors.get(actorId);
     isDefined(actor, `Actor with ID ${actorId} does not exist`);
@@ -77,8 +98,8 @@ class ActorSystem {
   }
 
   // Utility function for waiting on a message, demonstrating use of generics with DbC
-  waitForMessage<T extends BaseMessage>(
-    messageType: new (...args: any[]) => T
+  async waitForMessage<T extends BaseMessage>(
+    messageType: new (...args: any[]) => T,
   ): Promise<T> {
     // Declare 'subscription' outside but don't assign it yet.
     // 'let' is used because 'subscription' will be assigned later.
@@ -86,24 +107,26 @@ class ActorSystem {
       (typeof this.eventStream)["subscribe"]
     > | null = null;
 
-    return new Promise<T>((resolve, reject) => {
-      subscription = this.eventStream
-        .pipe(filter((msg): msg is T => msg instanceof messageType))
-        .subscribe({
-          next: resolve, // 'msg' is already confirmed to be of type 'T' by the filter
-          error: reject,
-          complete: () =>
-            reject(
-              new Error("Actor system shut down before message was received")
-            ),
-        });
-    }).finally(() => {
+    try {
+      return await new Promise<T>((resolve, reject) => {
+        subscription = this.eventStream
+          .pipe(filter((msg): msg is T => msg instanceof messageType))
+          .subscribe({
+            next: resolve,
+            error: reject,
+            complete: () =>
+              reject(
+                new Error("Actor system shut down before message was received"),
+              ),
+          });
+      });
+    } finally {
       // Check if 'subscription' was assigned before trying to unsubscribe
       // to avoid "Cannot read property 'unsubscribe' of null" error.
-      if (subscription) {
-        subscription.unsubscribe();
-      }
-    });
+      // if (subscription) {
+      //   subscription.unsubscribe();
+      // }
+    }
   }
 }
 

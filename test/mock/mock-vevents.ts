@@ -5,35 +5,39 @@ import { BaseMessage } from "../../src/actor/base-message";
 
 class EventCreated extends BaseMessage {
   constructor(public readonly event: VEvent) {
-    super({ messageType: "EventCreated", content: JSON.stringify(event) });
+    super({
+      attributes: { messageType: "EventCreated" },
+      content: JSON.stringify(event),
+    });
   }
 }
 
 class EventUpdated extends BaseMessage {
   constructor(
     public readonly eventId: string,
-    public readonly updatedEvent: VEvent
+    public readonly updatedEvent: VEvent,
   ) {
     super({
-      messageType: "EventUpdated",
-      content: JSON.stringify({ eventId, updatedEvent }),
+      id: eventId,
+      content: JSON.stringify(updatedEvent),
+      attributes: { messageType: "EventUpdated" },
     });
   }
 }
 
 class EventCancelled extends BaseMessage {
   constructor(public readonly eventId: string) {
-    super({ messageType: "EventCancelled", content: eventId });
+    super({ attributes: { messageType: "EventCancelled" }, content: eventId });
   }
 }
 
 class AttendeeAdded extends BaseMessage {
   constructor(
     public readonly eventId: string,
-    public readonly attendee: { name: string; email: string }
+    public readonly attendee: { name: string; email: string },
   ) {
     super({
-      messageType: "AttendeeAdded",
+      attributes: { messageType: "AttendeeAdded" },
       content: JSON.stringify({ eventId, attendee }),
     });
   }
@@ -42,10 +46,10 @@ class AttendeeAdded extends BaseMessage {
 class AttendeeRemoved extends BaseMessage {
   constructor(
     public readonly eventId: string,
-    public readonly attendeeEmail: string
+    public readonly attendeeEmail: string,
   ) {
     super({
-      messageType: "AttendeeRemoved",
+      attributes: { messageType: "AttendeeRemoved" },
       content: JSON.stringify({ eventId, attendeeEmail }),
     });
   }
@@ -53,7 +57,10 @@ class AttendeeRemoved extends BaseMessage {
 
 class EventReminderSent extends BaseMessage {
   constructor(public readonly eventId: string) {
-    super({ messageType: "EventReminderSent", content: eventId });
+    super({
+      attributes: { messageType: "EventReminderSent" },
+      content: eventId,
+    });
   }
 }
 
@@ -61,10 +68,10 @@ class EventRescheduled extends BaseMessage {
   constructor(
     public readonly eventId: string,
     public readonly newStart: string,
-    public readonly newEnd: string
+    public readonly newEnd: string,
   ) {
     super({
-      messageType: "EventRescheduled",
+      attributes: { messageType: "EventRescheduled" },
       content: JSON.stringify({ eventId, newStart, newEnd }),
     });
   }
