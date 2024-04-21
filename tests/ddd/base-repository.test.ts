@@ -22,7 +22,7 @@ class TestRepository extends BaseRepository<TestModel> {
 }
 
 describe("BaseRepository", () => {
-  const storageFile = path.join(__dirname, "test-storage.json");
+  const storageFile = path.join(__dirname, "tests-storage.json");
   let repository: TestRepository;
 
   beforeEach(() => {

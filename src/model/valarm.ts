@@ -3,9 +3,9 @@ import { extract } from "../utils/json-tools";
 import { VEvent } from "./vevent";
 
 class VAlarm {
-  action: string;
-  trigger: string;
-  description: string;
+  action!: string;
+  trigger!: string;
+  description!: string;
   duration?: string;
   repeat?: number;
 
@@ -16,19 +16,7 @@ class VAlarm {
     duration?: string;
     repeat?: number;
   }) {
-    this.action = data.action;
-    this.trigger = data.trigger;
-    this.description = data.description;
-    this.duration = data.duration;
-    this.repeat = data.repeat;
-
-    const validator = new Validator();
-    const validationResult = validator.validate(this, VAlarm.schema);
-    if (!validationResult.valid) {
-      throw new Error(
-        "Invalid VAlarm data: " + validationResult.errors.join(", ")
-      );
-    }
+    Object.assign(this, data);
   }
 
   static toStringSchema() {
@@ -37,6 +25,13 @@ class VAlarm {
 
   static fromString(data: string) {
     const value: VAlarm = extract(data) as unknown as VAlarm;
+    const validator = new Validator();
+    const validationResult = validator.validate(value, VAlarm.schema);
+    if (!validationResult.valid) {
+      throw new Error(
+        "Invalid VAlarm data: " + validationResult.errors.join(", "),
+      );
+    }
     return new VAlarm(value);
   }
 
@@ -68,8 +63,7 @@ class VAlarm {
         optional: true,
       },
     },
-    required: ["action", "trigger", "description"],
-    additionalProperties: false,
+    // required: ["action", "trigger", "description"],
   };
 }
 

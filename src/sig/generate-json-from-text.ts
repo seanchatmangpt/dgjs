@@ -36,17 +36,17 @@ Reasoning:
 `)
 export class GenerateJSONFromText {
   @InputField(
-    "JSON schema to validate the JSON object. YOUR RESPONSE MUST ADHERE TO THIS SCHEMA."
-  )
-  jsonSchema: string = "";
-
-  @InputField(
-    "Text information in structured or unstructured format. To be converted into a JSON object."
+    "Text information in structured or unstructured format. To be converted into a JSON object.",
   )
   textInformation: string = "";
 
+  @InputField(
+    "JSON schema to validate the JSON object. YOUR RESPONSE MUST ADHERE TO THIS SCHEMA.",
+  )
+  jsonSchema: string = "";
+
   @OutputField(
-    "YOUR ONLY OUTPUT IS THE JSON OBJECT. Ensure it adheres to the provided JSON schema. Do not include the schema in the output."
+    "YOUR ONLY OUTPUT IS THE JSON OBJECT. Ensure it adheres to the provided JSON schema. Do not include the schema in the output. Make sure property names are spelled correctly and values are accurately represented.",
   )
   jsonObject: string = "";
 }

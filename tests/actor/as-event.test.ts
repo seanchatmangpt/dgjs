@@ -1,4 +1,4 @@
-// test/actorSystem.test.ts
+// tests/actorSystem.tests.ts
 import { describe, it, expect, beforeEach } from "vitest";
 import MockScheduler from "../mock/mock-scheduler";
 import { checkForEventConflicts } from "../mock/mock-event-scheduler";
@@ -25,5 +25,5 @@ describe("Actor System Event Scheduling", () => {
     expect(true).toBe(true); // Replace with your actual assertions
   });
 
-  // More test here
+  // More tests here
 });

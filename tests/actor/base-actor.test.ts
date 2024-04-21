@@ -88,7 +88,7 @@ describe("TestActor", () => {
     );
   });
 
-  // Here you can add more test to cover any utility methods or edge cases.
+  // Here you can add more tests to cover any utility methods or edge cases.
 
   afterEach(() => {
     vi.restoreAllMocks();

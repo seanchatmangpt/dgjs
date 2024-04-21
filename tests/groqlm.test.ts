@@ -35,7 +35,7 @@ describe("GroqLM", () => {
   describe("constructor", () => {
     it.skip("throws an error if GROQ_API_KEY is not set", () => {
       expect(() => new GroqLM()).toThrowError(
-        "GROQ_API_KEY environment variable not found"
+        "GROQ_API_KEY environment variable not found",
       );
     });
 
@@ -69,7 +69,7 @@ describe("GroqLM", () => {
 
       vi.spyOn(groqLM.client.chat.completions, "create").mockResolvedValue(
         // @ts-ignore
-        mockResponse
+        mockResponse,
       );
 
       const result = await groqLM.basicRequest(prompt);
@@ -86,7 +86,7 @@ describe("GroqLM", () => {
       const mockError = new APIError(400, "", "Bad Request", {});
 
       vi.spyOn(groqLM.client.chat.completions, "create").mockRejectedValue(
-        mockError
+        mockError,
       );
 
       await expect(groqLM.basicRequest(prompt)).rejects.toThrow(APIError);
@@ -100,11 +100,11 @@ describe("GroqLM", () => {
       });
 
       vi.spyOn(groqLM.client.chat.completions, "create").mockRejectedValue(
-        mockError
+        mockError,
       );
 
       await expect(groqLM.basicRequest(prompt)).rejects.toThrow(
-        APIConnectionError
+        APIConnectionError,
       );
     });
 
@@ -115,11 +115,11 @@ describe("GroqLM", () => {
       });
 
       vi.spyOn(groqLM.client.chat.completions, "create").mockRejectedValue(
-        mockError
+        mockError,
       );
 
       await expect(groqLM.basicRequest(prompt)).rejects.toThrow(
-        APIConnectionTimeoutError
+        APIConnectionTimeoutError,
       );
     });
   });
@@ -167,7 +167,7 @@ describe("GroqLM", () => {
   });
 
   // Assuming a valid GroqLM integration environment
-  describe("Integration test", () => {
+  describe("Integration tests", () => {
     it("sends a request to the Groq API and returns the response", async () => {
       const prompt = "What is the capital of France?";
 

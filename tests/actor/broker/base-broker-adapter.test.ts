@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import * as sinon from "sinon";
-import { MockBrokerAdapter } from "../mock/mock-broker-adapter";
-import { BaseMessage } from "../../src/actor/base-message";
+import { MockBrokerAdapter } from "../../mock/mock-broker-adapter";
+import { BaseMessage } from "../../../src/actor/base-message";
 
 describe("MockBrokerAdapter", () => {
   let brokerAdapter: MockBrokerAdapter;
@@ -40,11 +40,11 @@ describe("MockBrokerAdapter", () => {
       brokerAdapter.subscribe(topic, messageHandler);
       await brokerAdapter.publish(
         topic,
-        new BaseMessage({ ...message, topic })
+        new BaseMessage({ ...message, topic }),
       );
 
       expect(messageHandler).toHaveBeenCalledWith(
-        new BaseMessage({ ...message, topic })
+        new BaseMessage({ ...message, topic }),
       );
     });
 
@@ -112,10 +112,10 @@ describe("MockBrokerAdapter", () => {
       // Assert
       expect(subscribedTopicHandler).toHaveBeenCalledTimes(1); // Called only once
       expect(subscribedTopicHandler).toHaveBeenCalledWith(
-        messageForSubscribedTopic
+        messageForSubscribedTopic,
       );
       expect(subscribedTopicHandler).not.toHaveBeenCalledWith(
-        messageForOtherTopic
+        messageForOtherTopic,
       );
     });
   });

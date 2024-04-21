@@ -2,42 +2,17 @@ import { Validator } from "jsonschema";
 import { extract } from "../utils/json-tools";
 
 class VEvent {
-  dtstart: string;
-  dtend: string;
-  summary: string;
-  location: string;
-  description: string;
-  uid: string;
-  organizer: { name: string; email: string };
-  attendees: { name: string; email: string }[];
+  dtstart!: string;
+  dtend!: string;
+  summary!: string;
+  location!: string;
+  description!: string;
+  uid!: string;
+  organizer!: { name: string; email: string };
+  attendees!: { name: string; email: string }[];
 
-  constructor(data: {
-    dtstart: string;
-    dtend: string;
-    summary: string;
-    location?: string;
-    description?: string;
-    uid: string;
-    organizer: { name: string; email: string };
-    attendees: { name: string; email: string }[];
-  }) {
-    this.dtstart = data.dtstart;
-    this.dtend = data.dtend;
-    this.summary = data.summary;
-    this.location = data.location || ""; // Default to empty if not provided
-    this.description = data.description || "";
-    this.uid = data.uid;
-    this.organizer = data.organizer;
-    this.attendees = data.attendees;
-
-    // Validate against JSON Schema on creation
-    const validator = new Validator();
-    const validationResult = validator.validate(this, VEvent.schema);
-    if (!validationResult.valid) {
-      throw new Error(
-        "Invalid VEvent data: " + validationResult.errors.join(", ")
-      );
-    }
+  constructor(data: VEvent) {
+    Object.assign(this, data);
   }
 
   static toStringSchema() {
@@ -46,6 +21,14 @@ class VEvent {
 
   static fromString(data: string) {
     const value: VEvent = extract(data) as unknown as VEvent;
+    // Validate against JSON Schema on creation
+    const validator = new Validator();
+    const validationResult = validator.validate(value, VEvent.schema);
+    if (!validationResult.valid) {
+      throw new Error(
+        "Invalid VEvent data: " + validationResult.errors.join(", "),
+      );
+    }
     return new VEvent(value);
   }
 
@@ -91,8 +74,6 @@ class VEvent {
             description: "The email address of the organizer",
           },
         },
-        required: ["name", "email"],
-        additionalProperties: false,
       },
       attendees: {
         type: "array",
@@ -110,12 +91,10 @@ class VEvent {
             },
           },
           required: ["name", "email"],
-          additionalProperties: false,
         },
       },
     },
-    required: ["summary", "dtstart", "dtend", "uid", "organizer", "attendees"],
-    additionalProperties: false,
+    required: ["summary", "dtstart"],
   };
 }
 

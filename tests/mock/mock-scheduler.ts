@@ -1,4 +1,4 @@
-// test/mock/MockScheduler.ts
+// tests/mock/MockScheduler.ts
 class MockScheduler {
   private jobs: { [key: string]: Function } = {};
 

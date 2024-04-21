@@ -2,7 +2,7 @@ import * as sinon from "sinon";
 import {
   BaseBrokerAdapter,
   BrokerAdapter,
-} from "../../src/actor/base-broker-adapter";
+} from "../../src/actor/broker/base-broker-adapter";
 import { BaseMessage } from "../../src";
 import { Subject, Observable, Subscription } from "rxjs";
 import { filter } from "rxjs/operators";
@@ -19,7 +19,7 @@ class MockBrokerAdapter extends BaseBrokerAdapter {
   async publish(
     topic: string,
     message: BaseMessage,
-    options?: { delay?: number }
+    options?: { delay?: number },
   ): Promise<void> {
     this.publishStub(topic, message); // Record publish calls
 
@@ -32,7 +32,7 @@ class MockBrokerAdapter extends BaseBrokerAdapter {
 
   subscribe(
     topic: string,
-    onMessage: (message: BaseMessage) => void
+    onMessage: (message: BaseMessage) => void,
   ): Subscription {
     const subscription = this.eventStream
       .pipe(filter((message) => message.topic === topic))

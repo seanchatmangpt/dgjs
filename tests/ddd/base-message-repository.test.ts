@@ -5,7 +5,7 @@ import { BaseMessageRepository } from "../../src/ddd/base-message-repository";
 import { BaseMessage } from "../../src";
 
 describe("BaseMessageRepository", () => {
-  const storageFile = path.join(__dirname, "test-messages.json");
+  const storageFile = path.join(__dirname, "tests-messages.json");
   let repository: BaseMessageRepository;
 
   beforeEach(() => {

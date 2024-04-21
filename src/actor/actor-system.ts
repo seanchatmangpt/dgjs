@@ -3,33 +3,39 @@ import { filter } from "rxjs/operators";
 import { BaseActor } from "./base-actor";
 import { BaseMessage } from "./base-message";
 import { assert, isDefined } from "../utils/design-by-contract-tools";
-import { BrokerAdapter } from "./base-broker-adapter";
+import { BrokerAdapter } from "./broker/base-broker-adapter";
 import { DEFAULT_TOPIC } from "../constant/constants";
 import { v4 as uuid } from "uuid";
 
 class ActorSystem {
   private actors: Map<string, BaseActor> = new Map();
-  private eventStream: Subject<BaseMessage> = new Subject();
+  eventStream: Subject<BaseMessage> = new Subject();
 
   constructor(private brokerAdapters: BrokerAdapter[] = []) {
     this.eventStream = new Subject();
 
     // Setup interactions with BrokerAdapters
     this.brokerAdapters.forEach((adapter) => {
-      // 1. Subscribe adapter to relevant events from the eventStream
-      adapter.subscribe(DEFAULT_TOPIC, (message) => {
-        // You might apply filtering here
-        this.eventStream.next(message);
-      });
-
-      // 2. Forward messages from publishMessage to adapters
-      this.publish = (message: BaseMessage) => {
-        // ... (Existing logic) ...
-        this.eventStream.next(message);
-        adapter.publish(message.topic, message);
-      };
+      this.registerBrokerAdapter(adapter);
     });
   }
+
+  registerBrokerAdapter(adapter: BrokerAdapter) {
+    adapter.onInit(this.eventStream);
+    // 1. Subscribe adapter to relevant events from the eventStream
+    adapter.subscribe(DEFAULT_TOPIC, (message) => {
+      // You might apply filtering here
+      this.eventStream.next(message);
+    });
+
+    // 2. Forward messages from publishMessage to adapters
+    this.publish = (message: BaseMessage) => {
+      // ... (Existing logic) ...
+      this.eventStream.next(message);
+      adapter.publish(message.topic, message);
+    };
+  }
+
   actorOf(
     actorClass: new (...args: any[]) => BaseActor,
     actorId?: string,

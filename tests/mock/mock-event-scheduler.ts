@@ -1,4 +1,4 @@
-// test/mock/mockEventScheduler.ts
+// tests/mock/mockEventScheduler.ts
 import { RRule, RRuleSet, rrulestr } from "rrule";
 
 function checkForEventConflicts(events: any[]) {
