@@ -1,6 +1,13 @@
 // MessageBroker.ts
 
 import express, { Request, Response } from "express";
+import { describe, beforeEach, it, expect, afterEach, vi } from "vitest";
+import { ActorSystem } from "../../../src/actor/actor-system";
+import { WebHookBrokerAdapter } from "../../../src/actor/broker/web-hook-broker-adapter";
+import { Subject } from "rxjs";
+import { BaseMessage } from "../../../src/actor/base-message";
+import { TestActor } from "./TestActor"; // Assume this is an actor you've defined
+import request from "supertest";
 
 interface Message {
   id: string;
@@ -92,14 +99,7 @@ class MessageBroker {
   }
 }
 
-import { describe, beforeEach, it, expect, afterEach, vi } from "vitest";
-import { ActorSystem } from "./ActorSystem";
-import { WebHookBrokerAdapter } from "./WebHookBrokerAdapter";
-import { Subject } from "rxjs";
-import { BaseMessage } from "./base-message";
-import express from "express";
-import { TestActor } from "./TestActor"; // Assume this is an actor you've defined
-import request from "supertest";
+
 
 describe("ActorSystem with WebHookBrokerAdapter", () => {
   let actorSystem: ActorSystem;

@@ -77,10 +77,7 @@ describe("Decorator Tests", () => {
 
 describe("Signature decorators and SignatureBase class", () => {
   // Define a tests class using decorators for testing
-  @SignatureDocumentation(`
-    [Test] This is a test class for verifying decorator functionality.
-    [/Test]
-  `)
+  @SignatureDocumentation(`[Test] This is a test class for verifying decorator functionality.[/Test]`)
   class TestSignature {
     @InputField("Test input description.", "InputPrefix:")
     testInput: string = "";
@@ -96,7 +93,7 @@ describe("Signature decorators and SignatureBase class", () => {
       "signatureDocumentation",
       TestSignature,
     );
-    expect(documentation.trim()).toContain("[Test] This is a tests class");
+    expect(documentation.trim()).toContain("[Test] This is a test class for verifying decorator functionality.[/Test]");
   });
 
   it("InputField and OutputField decorators should attach metadata correctly", () => {

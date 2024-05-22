@@ -1,6 +1,8 @@
 import { vi } from "vitest";
 import { BaseActor } from "../src";
 
+import 'dotenv/config'
+
 type ActorMethods<T> = {
   // @ts-ignore
   [P in keyof T]?: T[P] extends (...args: any[]) => any ? vi.ViFn<T[P]> : never;

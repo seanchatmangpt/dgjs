@@ -24,3 +24,7 @@ export * from './signature';
 export * from './template';
 export * from './utils/design-by-contract-tools';
 export * from './utils/json-tools';
+
+import 'dotenv/config'
+
+console.log("src/index.ts", process.env)
