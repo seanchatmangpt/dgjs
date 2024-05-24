@@ -1,0 +1,71 @@
+/* generated using openapi-typescript-codegen -- do not edit */
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export { ApiError } from './core/ApiError';
+export { CancelablePromise, CancelError } from './core/CancelablePromise';
+export { OpenAPI } from './core/OpenAPI';
+export type { OpenAPIConfig } from './core/OpenAPI';
+
+export type { AddContactToCampaignDto } from './models/AddContactToCampaignDto';
+export type { AttributionSource } from './models/AttributionSource';
+export type { BadRequestDTO } from './models/BadRequestDTO';
+export type { ContactsBulkUpateResponse } from './models/ContactsBulkUpateResponse';
+export type { ContactsBusinessUpdate } from './models/ContactsBusinessUpdate';
+export type { ContactsByIdSuccessfulResponseDto } from './models/ContactsByIdSuccessfulResponseDto';
+export type { ContactsMetaSchema } from './models/ContactsMetaSchema';
+export type { ContactsSearchSchema } from './models/ContactsSearchSchema';
+export type { ContactsSearchSuccessfulResponseDto } from './models/ContactsSearchSuccessfulResponseDto';
+export type { ContactsWorkflowSuccessfulResponseDto } from './models/ContactsWorkflowSuccessfulResponseDto';
+export type { CreateAddFollowersSuccessfulResponseDto } from './models/CreateAddFollowersSuccessfulResponseDto';
+export type { CreateAddTagSuccessfulResponseDto } from './models/CreateAddTagSuccessfulResponseDto';
+export type { CreateContactDto } from './models/CreateContactDto';
+export type { CreateContactSchema } from './models/CreateContactSchema';
+export type { CreateContactsSuccessfulResponseDto } from './models/CreateContactsSuccessfulResponseDto';
+export type { CreateDeleteCantactsCampaignsSuccessfulResponseDto } from './models/CreateDeleteCantactsCampaignsSuccessfulResponseDto';
+export type { CreateDeleteTagSuccessfulResponseDto } from './models/CreateDeleteTagSuccessfulResponseDto';
+export type { CreateTaskParams } from './models/CreateTaskParams';
+export type { CreateWorkflowDto } from './models/CreateWorkflowDto';
+export type { CustomFieldSchema } from './models/CustomFieldSchema';
+export type { customFieldsInputArraySchema } from './models/customFieldsInputArraySchema';
+export type { customFieldsInputObjectSchema } from './models/customFieldsInputObjectSchema';
+export type { customFieldsInputStringSchema } from './models/customFieldsInputStringSchema';
+export type { DeleteContactsSuccessfulResponseDto } from './models/DeleteContactsSuccessfulResponseDto';
+export type { DeleteFollowersSuccessfulResponseDto } from './models/DeleteFollowersSuccessfulResponseDto';
+export type { DeleteNoteSuccessfulResponseDto } from './models/DeleteNoteSuccessfulResponseDto';
+export type { DeleteTaskSuccessfulResponseDto } from './models/DeleteTaskSuccessfulResponseDto';
+export { DndSettingSchema } from './models/DndSettingSchema';
+export type { DndSettingsSchema } from './models/DndSettingsSchema';
+export type { FollowersDTO } from './models/FollowersDTO';
+export type { GetContectByIdSchema } from './models/GetContectByIdSchema';
+export type { GetCreateUpdateNoteSuccessfulResponseDto } from './models/GetCreateUpdateNoteSuccessfulResponseDto';
+export type { GetEventSchema } from './models/GetEventSchema';
+export type { GetEventsSuccessfulResponseDto } from './models/GetEventsSuccessfulResponseDto';
+export type { GetNoteSchema } from './models/GetNoteSchema';
+export type { GetNotesListSuccessfulResponseDto } from './models/GetNotesListSuccessfulResponseDto';
+export { InboundDndSettingSchema } from './models/InboundDndSettingSchema';
+export type { InboundDndSettingsSchema } from './models/InboundDndSettingsSchema';
+export type { NotesDTO } from './models/NotesDTO';
+export type { TagsDTO } from './models/TagsDTO';
+export type { TaskByIsSuccessfulResponseDto } from './models/TaskByIsSuccessfulResponseDto';
+export type { TaskSchema } from './models/TaskSchema';
+export type { TasksListSuccessfulResponseDto } from './models/TasksListSuccessfulResponseDto';
+export type { UnauthorizedDTO } from './models/UnauthorizedDTO';
+export type { UnprocessableDTO } from './models/UnprocessableDTO';
+export type { UpdateContactDto } from './models/UpdateContactDto';
+export type { UpdateContactsSuccessfulResponseDto } from './models/UpdateContactsSuccessfulResponseDto';
+export type { UpdateTaskBody } from './models/UpdateTaskBody';
+export type { UpdateTaskStatusParams } from './models/UpdateTaskStatusParams';
+export type { UpsertContactDto } from './models/UpsertContactDto';
+export type { UpsertContactsSuccessfulResponseDto } from './models/UpsertContactsSuccessfulResponseDto';
+
+export { AppointmentsService } from './services/AppointmentsService';
+export { BulkService } from './services/BulkService';
+export { CampaignsService } from './services/CampaignsService';
+export { ContactsService } from './services/ContactsService';
+export { FollowersService } from './services/FollowersService';
+export { NotesService } from './services/NotesService';
+export { SearchService } from './services/SearchService';
+export { TagsService } from './services/TagsService';
+export { TasksService } from './services/TasksService';
+export { WorkflowService } from './services/WorkflowService';

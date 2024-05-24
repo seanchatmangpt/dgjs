@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/dgjs.iml" filepath="$PROJECT_DIR$/.idea/dgjs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../nuxt-ai-chatbot/.idea/nuxt-ai-chatbot.iml" filepath="$PROJECT_DIR$/../nuxt-ai-chatbot/.idea/nuxt-ai-chatbot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dpgjs.iml" filepath="$PROJECT_DIR$/.idea/dpgjs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ghl-marketplace-app-template/.idea/ghl-marketplace-app-template.iml" filepath="$PROJECT_DIR$/../ghl-marketplace-app-template/.idea/ghl-marketplace-app-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../catalyst-samples/javascript/.idea/javascript.iml" filepath="$PROJECT_DIR$/../catalyst-samples/javascript/.idea/javascript.iml" />
     </modules>
   </component>
 </project>

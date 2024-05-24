@@ -14,7 +14,7 @@ describe("ActorSystem and WebHookBrokerAdapter Integration", () => {
   let actorSystem: ActorSystem;
   let eventStream: Subject<BaseMessage>;
   let webhookAdapter: WebHookBrokerAdapter;
-  const webhookUrl = "http://localhost:3000/webhook";
+  const webhookUrl = "http://localhost:8888/webhook";
   const expressApp = express();
 
   beforeEach(() => {

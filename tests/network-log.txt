@@ -1,0 +1,416 @@
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "POST",
+  "path": "/oauth/token",
+  "body": "client_id=664a91f1e6e257e89606aba7-lwe77oj5&client_secret=cf440665-bd7b-4045-a5ea-12fae99ddc00&grant_type=authorization_code&code=test_code",
+  "status": 400,
+  "response": {
+    "error": "invalid_grant",
+    "error_description": "Invalid grant: authorization code is invalid"
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 18:44:27 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "92",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"5c-nu5oCmLpXZuvlvq6gj2UrM3lA2c\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "25",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "888732889f4b0fe8-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "http://127.0.0.1:64619",
+  "method": "GET",
+  "path": "/authorize-handler?code=test_code",
+  "body": "",
+  "status": 302,
+  "response": "Found. Redirecting to https://app.gohighlevel.com/",
+  "rawHeaders": [
+    "X-Powered-By",
+    "Express",
+    "Location",
+    "https://app.gohighlevel.com/",
+    "Vary",
+    "Accept",
+    "Content-Type",
+    "text/plain; charset=utf-8",
+    "Content-Length",
+    "50",
+    "Date",
+    "Thu, 23 May 2024 18:44:27 GMT",
+    "Connection",
+    "close"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "POST",
+  "path": "/oauth/token",
+  "body": "client_id=664a91f1e6e257e89606aba7-lwe77oj5&client_secret=cf440665-bd7b-4045-a5ea-12fae99ddc00&grant_type=authorization_code&code=test_code",
+  "status": 400,
+  "response": {
+    "error": "invalid_grant",
+    "error_description": "Invalid grant: authorization code is invalid"
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 18:46:27 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "92",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"5c-nu5oCmLpXZuvlvq6gj2UrM3lA2c\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "106",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "888735735cf02f64-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "http://127.0.0.1:64795",
+  "method": "GET",
+  "path": "/authorize-handler?code=test_code",
+  "body": "",
+  "status": 302,
+  "response": "Found. Redirecting to https://app.gohighlevel.com/",
+  "rawHeaders": [
+    "X-Powered-By",
+    "Express",
+    "Location",
+    "https://app.gohighlevel.com/",
+    "Vary",
+    "Accept",
+    "Content-Type",
+    "text/plain; charset=utf-8",
+    "Content-Length",
+    "50",
+    "Date",
+    "Thu, 23 May 2024 18:46:27 GMT",
+    "Connection",
+    "close"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "GET",
+  "path": "/calendars/4a350eae-cc6c-4a4f-a2c6-fc9b24be6d82/free-slots?startDate=2024-05-23T08%3A33%3A09.027Z&endDate=2024-05-24T02%3A37%3A39.872Z&timezone=UTC&userId=0da11618-a3fb-444c-aa94-e0fe8e4cd4f3",
+  "body": "",
+  "status": 401,
+  "response": {
+    "message": "Invalid JWT",
+    "error": "Unauthorized",
+    "statusCode": 401
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 19:47:45 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "65",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"41-+7HF8tinPQQwsk/5wjNql7Dr1UE\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "19",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "88878f41286f1013-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "POST",
+  "path": "/calendars/",
+  "body": {
+    "locationId": "9c61b178-d8af-4897-be1d-af5d818be148",
+    "name": "Trantow - Simonis",
+    "description": "Bos derelinquo cogito iste strues alii aeger arca.",
+    "slug": "sodalitas-solium-adimpleo",
+    "widgetSlug": "admoneo-attollo-vicissitudo",
+    "calendarType": "event",
+    "widgetType": "default",
+    "eventTitle": "curis quia vitae",
+    "eventColor": "#fd4425",
+    "meetingLocation": "201 Aleen Roads",
+    "slotDuration": 41,
+    "preBufferUnit": "mins",
+    "slotInterval": 41,
+    "slotBuffer": 6,
+    "preBuffer": 10,
+    "appoinmentPerSlot": 5,
+    "appoinmentPerDay": 7,
+    "openHours": [],
+    "enableRecurring": true,
+    "formId": "1c28c89f-2d32-4437-ad7b-b67b73a8226d",
+    "stickyContact": true,
+    "isLivePaymentMode": false,
+    "autoConfirm": false,
+    "shouldSendAlertEmailsToAssignedMember": true,
+    "alertEmail": "Edward_Macejkovic20@hotmail.com",
+    "googleInvitationEmails": false,
+    "allowReschedule": false,
+    "allowCancellation": true,
+    "shouldAssignContactToTeamMember": true,
+    "shouldSkipAssigningContactForExisting": false,
+    "notes": "Beatae vociferor corona nemo desipio creator.",
+    "pixelId": "08ced954-f41a-4555-863b-650d1efe2f00",
+    "formSubmitType": "RedirectURL",
+    "formSubmitRedirectURL": "https://greedy-expansion.net",
+    "formSubmitThanksMessage": "Dolore ara minus stabilis.",
+    "availabilityType": "STANDARD",
+    "availabilities": [],
+    "guestType": "count_only",
+    "consentLabel": "Adicio aeneus ustulo omnis basium auditor damno abduco veniam.",
+    "calendarCoverImage": "https://picsum.photos/seed/dO8SLckmIP/640/480",
+    "notifications": [],
+    "groupId": "821f9bab-af9b-4956-bcf5-7f504d6c10f3",
+    "teamMembers": [],
+    "eventType": "RoundRobin_OptimizeForAvailability"
+  },
+  "status": 401,
+  "response": {
+    "message": "Invalid JWT",
+    "error": "Unauthorized",
+    "statusCode": 401
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 19:47:45 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "65",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"41-+7HF8tinPQQwsk/5wjNql7Dr1UE\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "63",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "88878f41e9821013-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "GET",
+  "path": "/calendars/9f661e5e-7a57-4117-8891-85c65daa1504/free-slots?startDate=2024-05-22T21%3A07%3A32.506Z&endDate=2024-05-24T09%3A53%3A47.458Z&timezone=UTC&userId=2e171365-80c3-47aa-a481-541d1119c38e",
+  "body": "",
+  "status": 401,
+  "response": {
+    "message": "Invalid JWT",
+    "error": "Unauthorized",
+    "statusCode": 401
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 19:48:51 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "65",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"41-+7HF8tinPQQwsk/5wjNql7Dr1UE\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "12",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "888790df89790ff5-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
+
+<<<<<<-- cut here -->>>>>>
+{
+  "scope": "https://services.leadconnectorhq.com:443",
+  "method": "POST",
+  "path": "/calendars/",
+  "body": {
+    "locationId": "ef33e22f-d868-4c32-b0b4-8b8b95ad8e08",
+    "name": "Pagac Inc",
+    "description": "Numquam vicissitudo aequitas incidunt tum molestias.",
+    "slug": "argumentum-suus-utpote",
+    "widgetSlug": "considero-adfero-atqui",
+    "calendarType": "event",
+    "widgetType": "default",
+    "eventTitle": "corroboro acervus sequi",
+    "eventColor": "#e8b7eb",
+    "meetingLocation": "389 Johnston Ridges",
+    "slotDuration": 16,
+    "preBufferUnit": "mins",
+    "slotInterval": 54,
+    "slotBuffer": 10,
+    "preBuffer": 5,
+    "appoinmentPerSlot": 1,
+    "appoinmentPerDay": 8,
+    "openHours": [],
+    "enableRecurring": true,
+    "formId": "a787d115-443e-473c-b0cd-7e27f8589037",
+    "stickyContact": false,
+    "isLivePaymentMode": true,
+    "autoConfirm": false,
+    "shouldSendAlertEmailsToAssignedMember": true,
+    "alertEmail": "Seth21@gmail.com",
+    "googleInvitationEmails": true,
+    "allowReschedule": false,
+    "allowCancellation": false,
+    "shouldAssignContactToTeamMember": true,
+    "shouldSkipAssigningContactForExisting": true,
+    "notes": "Demitto cursim terreo careo pecus deprimo adipiscor cur accusator.",
+    "pixelId": "305096bf-d511-42e2-8bac-c3eb2d3b66a8",
+    "formSubmitType": "RedirectURL",
+    "formSubmitRedirectURL": "https://appropriate-reject.info/",
+    "formSubmitThanksMessage": "Accendo urbs ut constans.",
+    "availabilityType": "STANDARD",
+    "availabilities": [],
+    "guestType": "count_only",
+    "consentLabel": "Adiuvo coadunatio consectetur vorago titulus contabesco sapiente aggero video.",
+    "calendarCoverImage": "https://picsum.photos/seed/5gPXgLd/640/480",
+    "notifications": [],
+    "groupId": "8b5f91e2-22d2-46b4-8135-0f1d2184e420",
+    "teamMembers": [],
+    "eventType": "RoundRobin_OptimizeForAvailability"
+  },
+  "status": 401,
+  "response": {
+    "message": "Invalid JWT",
+    "error": "Unauthorized",
+    "statusCode": 401
+  },
+  "rawHeaders": [
+    "Date",
+    "Thu, 23 May 2024 19:48:51 GMT",
+    "Content-Type",
+    "application/json; charset=utf-8",
+    "Content-Length",
+    "65",
+    "Connection",
+    "keep-alive",
+    "x-powered-by",
+    "Express",
+    "access-control-allow-origin",
+    "*",
+    "etag",
+    "W/\"41-+7HF8tinPQQwsk/5wjNql7Dr1UE\"",
+    "vary",
+    "Accept-Encoding",
+    "x-envoy-upstream-service-time",
+    "14",
+    "strict-transport-security",
+    "max-age=31536000",
+    "CF-Cache-Status",
+    "DYNAMIC",
+    "Server",
+    "cloudflare",
+    "CF-RAY",
+    "888790e04a770ff5-LAX"
+  ],
+  "responseIsBinary": false
+}
+<<<<<<-- cut here -->>>>>>
+
